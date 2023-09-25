@@ -93,7 +93,7 @@
 body {
 	background-attachment: fixed;
 	background-size: cover;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
 }
 
 #pagetitle { margin-bottom: 35px; }
