@@ -11,8 +11,6 @@ use Bitrix\Main\Localization\Loc;
 $usePriceInAdditionalColumn = in_array('PRICE', $arParams['COLUMNS_LIST']) && $arParams['PRICE_DISPLAY_MODE'] === 'Y';
 $useSumColumn = in_array('SUM', $arParams['COLUMNS_LIST']);
 $useActionColumn = in_array('DELETE', $arParams['COLUMNS_LIST']);
-
-var_dump($useSumColumn);
 $restoreColSpan = 2 + $usePriceInAdditionalColumn + $useSumColumn + $useActionColumn;
 
 $positionClassMap = array(
