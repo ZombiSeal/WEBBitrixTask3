@@ -287,8 +287,12 @@ if (empty($arResult['ERROR_MESSAGE'])) {
 }
 ?>
 <script>
-    $('.basket__clear').click(function (e) {
+    $(document).on('click', '.basket__product-del a', function (e){
         e.preventDefault();
-        $('.basket-item-actions-remove').click();
+    })
+    $(document).on('click','.basket__clear', function (e) {
+        e.preventDefault();
+        console.log("DEL");
+        $('.basket__product-del').click();
     });
 </script>
