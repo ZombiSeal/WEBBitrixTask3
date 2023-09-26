@@ -206,9 +206,13 @@ if (!empty($arParams['LABEL_PROP_POSITION'])) {
             ?>
 
         </div>
+        <div class="basket__price">
+            <div class="basket__price-current">{{{PRICE_FORMATED}}}</div>
+            <div class="basket__price-count-text"><?= Loc::getMessage('SBB_BASKET_ITEM_PRICE_FOR') ?> {{MEASURE_RATIO}} {{MEASURE_TEXT}}</div>
+        </div>
     </div>
 
-    <!--	<tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"-->
+                <!--	<tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"-->
     <!--		id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">-->
     <!--		{{#SHOW_RESTORE}}-->
     <!--			<td class="basket-items-list-item-notification" colspan="--><?php //=$restoreColSpan?><!--">-->
