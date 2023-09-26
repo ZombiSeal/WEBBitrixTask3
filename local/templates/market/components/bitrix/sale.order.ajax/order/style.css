@@ -1526,3 +1526,7 @@ hr.bxe-light {
 
 /* USER CONSENT */
 .bx-sls .bx-ui-sls-container { min-height: 33px !important; }
+
+.bx-section-hide {
+	display: none;
+}

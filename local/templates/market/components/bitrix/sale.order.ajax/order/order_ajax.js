@@ -5488,7 +5488,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				]
 			});
 
-			if (currentDelivery.PRICE >= 0)
+			if (currentDelivery.PRICE > 0)
 			{
 				price = BX.create('LI', {
 					children: [
@@ -5499,6 +5499,23 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 						BX.create('DIV', {
 							props: {className: 'bx-soa-pp-list-description'},
 							children: this.getDeliveryPriceNodes(currentDelivery)
+						})
+					]
+				});
+
+			}
+
+			if (currentDelivery.PRICE == 0)
+			{
+				price = BX.create('LI', {
+					children: [
+						BX.create('DIV', {
+							props: {className: 'bx-soa-pp-list-termin'},
+							html: this.params.MESS_PRICE + ':'
+						}),
+						BX.create('DIV', {
+							props: {className: 'bx-soa-pp-list-description'},
+							children: this.params.MESS_PRICE_FREE
 						})
 					]
 				});
@@ -5515,7 +5532,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			}
 
 			clear = BX.create('DIV', {style: {clear: 'both'}});
-			infoList = BX.create('UL', {props: {className: 'bx-soa-pp-list'}, children: [price, period]});
+			infoList = BX.create('UL', {props: {className: 'bx-soa-pp-list'}, children: [price, period]}); //БЛОК СО СТОИМОСТЬЮ ВНИЗУ ПРИ БЕСПЛАТНОЙ ДОСТАВКЕ
 			extraServices = this.getDeliveryExtraServices(currentDelivery);
 
 			if (extraServices.length)
@@ -8029,7 +8046,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				if (parseFloat(total.DELIVERY_PRICE) === 0)
 				{
-					deliveryValue = this.params.MESS_PRICE_FREE;
+					deliveryValue = total.DELIVERY_PRICE_FORMATED; //НАЗНАЧАЕМ СЛОВО бесплатно В ПРАВОЙ ЧАСТИ
 					params.free = true;
 				}
 				else
@@ -8046,8 +8063,9 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				}
 			}
 
-			if (this.result.DELIVERY.length)
+			if (this.result.DELIVERY.length) //ТО ЧТО ОТВЕЧАЕТ ЗА ВЫВОД ЦЕНЫ ЗА ДОСТАВКУ В БОКОВОЙ ЧАСТИ
 			{
+				console.log(deliveryValue);
 				this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_DELIVERY'), deliveryValue, params));
 			}
 
